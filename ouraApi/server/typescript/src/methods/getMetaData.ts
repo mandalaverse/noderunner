@@ -19,7 +19,7 @@ const mongoDbGetAsset = async ( policyID: any, assetName: any ) => {
   const collection: any = db.collection('testnet');
   const obj: any = `metadata.map_json.${policyID}.${assetName}`;
   console.log(obj);
-  const findResult: any = await collection.find({ [obj]: { $exists: true } }).toArray();
+  const findResult: any = await collection.find({ [obj]: { $exists: true }}, { projection: { [obj]: 1 }}).toArray();
   
   console.log('Found documents =>', findResult);
 
