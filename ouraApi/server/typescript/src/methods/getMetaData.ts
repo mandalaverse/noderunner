@@ -7,7 +7,7 @@ const getMetaData: GetMetaData = (policyID, assetName) => {
   );
 };
 
-const mongoDbGetAsset = async ( policyID: string, assetName: string ) => {
+const mongoDbGetAsset = async ( policyID: any, assetName: any ) => {
   // Connection URL
   const url = 'mongodb://localhost:27017';
   const client = new MongoClient(url);
@@ -17,8 +17,10 @@ const mongoDbGetAsset = async ( policyID: string, assetName: string ) => {
   console.log('Connected successfully to server');
   const db: any = client.db(dbName);
   const collection: any = db.collection('testnet');
-
-  const findResult: any = await collection.find({}, {"metadata.map_json.68f160cd5597a4e0253b227e44e07aa81c79264bd8b424f9baa0c87d.Test952": 1, "_id": 0}).toArray();
+  const obj: any = `metadata.map_json.${policyID}.${assetName}`;
+  console.log(obj);
+  const findResult: any = await collection.find({ [obj]: { $exists: true } }).toArray();
+  
   console.log('Found documents =>', findResult);
 
   return(findResult);
