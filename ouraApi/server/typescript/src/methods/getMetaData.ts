@@ -15,10 +15,10 @@ const mongoDbGetAsset = async ( policyID: string, assetName: string ) => {
 
   await client.connect();
   console.log('Connected successfully to server');
-  const db = client.db(dbName);
-  const collection = db.collection('testnet');
+  const db: any = client.db(dbName);
+  const collection: any = db.collection('testnet');
 
-  const findResult: any = await collection.find({}).toArray();
+  const findResult: any = await collection.find({}, {"metadata.map_json.68f160cd5597a4e0253b227e44e07aa81c79264bd8b424f9baa0c87d.Test952": 1, "_id": 0}).toArray();
   console.log('Found documents =>', findResult);
 
   return(findResult);
