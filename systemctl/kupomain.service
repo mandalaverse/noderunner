@@ -1,0 +1,29 @@
+[Unit]
+Description     = Kupo Mainnet Service
+Wants           = network-online.target
+After           = network-online.target
+
+[Service]
+User            = bakon
+Type            = simple
+WorkingDirectory=/home/bakon/.cardano/mainnet/kupo
+ExecStart=kupo \
+    --node-socket /home/bakon/.cardano/mainnet/socket/node.socket \
+    --node-config /home/bakon/.cardano/mainnet/files/mainnet-config.json \
+    --host 0.0.0.0 \
+    --port 4202 \
+    --since 4492799.f8084c61b6a238acec985b59310b6ecec49c0ab8352249afd7268da5cff2a457 \
+    --match */* \
+    --log-level Debug \
+    --workdir /home/bakon/.cardano/mainnet/kupo
+KillSignal=SIGINT
+RestartKillSignal=SIGINT
+TimeoutStopSec=10
+LimitNOFILE=32768
+Restart=always
+RestartSec=10
+Environment=LD_LIBRARY_PATH=/usr/local/lib
+Environment=PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+[Install]
+WantedBy= multi-user.target

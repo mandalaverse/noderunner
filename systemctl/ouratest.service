@@ -1,0 +1,21 @@
+[Unit]
+Description     = Oura Testnet service
+Wants           = network-online.target
+After           = network-online.target
+
+[Service]
+User            = bakon
+Type            = simple
+WorkingDirectory=/home/bakon/.cardano/testnet/oura
+ExecStart=oura daemon --config config.toml
+KillSignal=SIGINT
+RestartKillSignal=SIGINT
+TimeoutStopSec=10
+LimitNOFILE=32768
+Restart=always
+RestartSec=10
+Environment=LD_LIBRARY_PATH=/usr/local/lib
+Environment=PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+[Install]
+WantedBy= multi-user.target

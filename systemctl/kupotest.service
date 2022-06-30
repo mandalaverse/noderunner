@@ -1,0 +1,28 @@
+[Unit]
+Description     = Kupo Testnet Service
+Wants           = network-online.target
+After           = network-online.target
+
+[Service]
+User            = bakon
+Type            = simple
+WorkingDirectory=/home/bakon/.cardano/testnet/kupo
+ExecStart=kupo \
+    --node-socket /home/bakon/.cardano/testnet/socket/node.socket \
+    --node-config /home/bakon/.cardano/testnet/files/testnet-config.json \
+    --host 0.0.0.0 \
+    --port 4203 \
+    --since origin \
+    --match */* \
+    --workdir /home/bakon/.cardano/testnet/kupo
+KillSignal=SIGINT
+RestartKillSignal=SIGINT
+TimeoutStopSec=10
+LimitNOFILE=32768
+Restart=always
+RestartSec=10
+Environment=LD_LIBRARY_PATH=/usr/local/lib
+Environment=PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+[Install]
+WantedBy= multi-user.target

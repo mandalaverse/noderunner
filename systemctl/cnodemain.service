@@ -1,0 +1,26 @@
+[Unit]
+Description     = Cardano node mainnet service
+Wants           = network-online.target
+After           = network-online.target
+
+[Service]
+User            = <username>
+Type            = simple
+WorkingDirectory= /home/<username>/.cardano/mainnet/
+ExecStart       = cardano-node run \
+      --database-path 	/home/<username>/.cardano/mainnet/db/ \
+      --socket-path 	/home/<username>/.cardano/mainnet/socket/node.socket \
+      --config 		/home/<username>/.cardano/mainnet/files/mainnet-config.json \
+      --topology 	/home/<username>/.cardano/mainnet/files/mainnet-topology.json \
+      --port		3000 
+KillSignal=SIGINT
+RestartKillSignal=SIGINT
+TimeoutStopSec=10
+LimitNOFILE=32768
+Restart=always
+RestartSec=10
+Environment=LD_LIBRARY_PATH=/usr/local/lib
+Environment=PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+[Install]
+WantedBy= multi-user.target
