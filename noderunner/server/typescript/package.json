@@ -1,0 +1,42 @@
+{
+  "name": "noderunnerserver",
+  "private": false,
+  "version": "0.0.1-beta",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-rpc/generator-client.git"
+  },
+  "main": "./build/index.js",
+  "files": [
+    "build/**/*",
+    ".node-version"
+  ],
+  "scripts": {
+    "start": "npm run build && node ./build/index.js",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:unit": "jest --coverage",
+    "test:lint": "tslint -c tslint.json 'src/**/*.ts' --fix",
+    "build": "tsc",
+    "watch:build": "tsc --watch",
+    "watch:test": "jest --watch"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@open-rpc/schema-utils-js": "^1.12.0",
+    "@open-rpc/server-js": "^1.6.2",
+    "mongodb": "^4.7.0"
+  },
+  "devDependencies": {
+    "@open-rpc/meta-schema": "^1.6.0",
+    "@types/connect": "^3.4.33",
+    "@types/cors": "^2.8.6",
+    "@types/jest": "25.1.0",
+    "@types/node": "^18.0.0",
+    "jest": "^25.1.0",
+    "ts-jest": "25.0.0",
+    "tslint": "6.0.0",
+    "typescript": "3.7.5"
+  }
+}
