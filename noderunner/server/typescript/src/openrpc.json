@@ -1,7 +1,7 @@
 {
   "openrpc": "1.2.6",
   "info": {
-    "title": "ouraMetadataApi",
+    "title": "noderunner",
     "version": "0.0.1-beta",
     "description": "API that fetches asset metadata from Oura generated mongodb sync."
   },

@@ -13,10 +13,17 @@ export async function start() {
       {
         type: "HTTPTransport",
         options: {
-          port:  4441,
+          port: process.env.HTTP_PORT ? parseInt(process.env.HTTP_PORT, 10) : 4441,
           middleware: [],
         } as HTTPServerTransportOptions,
-      }
+      },
+      {
+        type: "WebSocketTransport",
+        options: {
+          port: process.env.WS_PORT || 3331,
+          middleware: [],
+        } as WebSocketServerTransportOptions,
+      },
     ],
     methodMapping,
   };

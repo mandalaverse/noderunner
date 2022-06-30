@@ -26,9 +26,9 @@ export interface Options {
   },
 }
 
-export class OuraMetadataApi {
+export class Noderunner {
   public rpc: Client;
-  public static openrpcDocument: OpenRPC = {"openrpc":"1.2.6","info":{"title":"ouraMetadataApi","version":"0.0.1-beta","description":"API that fetches asset metadata from Oura generated mongodb sync."},"methods":[{"name":"getMetaData","description":"Fetches Metadata for provided policyID and/or Asset","params":[{"name":"policyID","description":"policyID","required":true,"schema":{"title":"policyID","type":"string"}},{"name":"assetName","description":"assetName","required":true,"schema":{"title":"assetName","type":"string"}}],"result":{"name":"getMetaDataResult","description":"Returns asset metadata","schema":{"type":"string"}}}],"components":{"contentDescriptors":{"policyID":{"name":"policyID","description":"policyID","required":true,"schema":{"title":"policyID","type":"string"}},"assetName":{"name":"assetName","description":"assetName","required":true,"schema":{"title":"assetName","type":"string"}}}}} ;
+  public static openrpcDocument: OpenRPC = {"openrpc":"1.2.6","info":{"title":"noderunner","version":"0.0.1-beta","description":"API that fetches asset metadata from Oura generated mongodb sync."},"methods":[{"name":"getMetaData","description":"Fetches Metadata for provided policyID and/or Asset","params":[{"name":"policyID","description":"policyID","required":true,"schema":{"title":"policyID","type":"string"}},{"name":"assetName","description":"assetName","required":true,"schema":{"title":"assetName","type":"string"}}],"result":{"name":"getMetaDataResult","description":"Returns asset metadata","schema":{"type":"string"}}}],"components":{"contentDescriptors":{"policyID":{"name":"policyID","description":"policyID","required":true,"schema":{"title":"policyID","type":"string"}},"assetName":{"name":"assetName","description":"assetName","required":true,"schema":{"title":"assetName","type":"string"}}}}} ;
   public transport: HTTPTransport | WebSocketTransport | PostMessageWindowTransport | PostMessageIframeTransport;
   private validator: MethodCallValidator;
   private timeout: number | undefined;
@@ -62,7 +62,7 @@ export class OuraMetadataApi {
         break;
     }
     this.rpc = new Client(new RequestManager([this.transport]));
-    this.validator = new MethodCallValidator(OuraMetadataApi.openrpcDocument);
+    this.validator = new MethodCallValidator(Noderunner.openrpcDocument);
   }
   /**
    * Adds a JSONRPC notification handler to handle receiving notifications.
@@ -95,10 +95,10 @@ export class OuraMetadataApi {
   }
 
   /**
-   * Initiates [[OuraMetadataApi.startBatch]] in order to build a batch call.
+   * Initiates [[Noderunner.startBatch]] in order to build a batch call.
    *
-   * Subsequent calls to [[OuraMetadataApi.request]] will be added to the batch.
-   * Once [[OuraMetadataApi.stopBatch]] is called, the promises for the [[OuraMetadataApi.request]]
+   * Subsequent calls to [[Noderunner.request]] will be added to the batch.
+   * Once [[Noderunner.stopBatch]] is called, the promises for the [[Noderunner.request]]
    * will then be resolved.  If there is already a batch in progress this method is a noop.
    *
    * @example
@@ -114,8 +114,8 @@ export class OuraMetadataApi {
   /**
    * Initiates [[Client.stopBatch]] in order to finalize and send the batch to the underlying transport.
    *
-   * stopBatch will send the [[OuraMetadataApi]] calls made since the last [[OuraMetadataApi.startBatch]] call. For
-   * that reason, [[OuraMetadataApi.startBatch]] MUST be called before [[OuraMetadataApi.stopBatch]].
+   * stopBatch will send the [[Noderunner]] calls made since the last [[Noderunner.startBatch]] call. For
+   * that reason, [[Noderunner.startBatch]] MUST be called before [[Noderunner.stopBatch]].
    *
    * @example
    * myClient.startBatch();
@@ -128,7 +128,7 @@ export class OuraMetadataApi {
   }
 
   private request(methodName: string, params: any[]): Promise<any> {
-    const methodObject = _.find((OuraMetadataApi.openrpcDocument.methods as MethodObject[]), ({name}) => name === methodName) as MethodObject;
+    const methodObject = _.find((Noderunner.openrpcDocument.methods as MethodObject[]), ({name}) => name === methodName) as MethodObject;
     const notification = methodObject.result ? false : true;
     const openRpcMethodValidationErrors = this.validator.validate(methodName, params);
     if ( openRpcMethodValidationErrors instanceof MethodNotFoundError || openRpcMethodValidationErrors.length > 0) {
@@ -157,4 +157,4 @@ export class OuraMetadataApi {
   }
   
 }
-export default OuraMetadataApi;
+export default Noderunner;
