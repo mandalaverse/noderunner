@@ -1,5 +1,6 @@
 import { GetMetaData } from "../generated-typings";
 import { MongoClient } from 'mongodb';
+require('dotenv').config();
 
 const getMetaData: GetMetaData = (policyID, assetName) => {
   return Promise.resolve(
@@ -16,7 +17,7 @@ const mongoDbGetAsset = async ( policyID: any, assetName: any ) => {
   await client.connect();
   console.log('Connected successfully to server');
   const db: any = client.db(dbName);
-  const collection: any = db.collection('testnet');
+  const collection: any = db.collection(process.env.COLL);
   const obj: any = `metadata.map_json.${policyID}.${assetName}`;
   console.log(obj);
   const findResult: any = await collection.find({ [obj]: { $exists: true }}, { projection: { [obj]: 1 }}).toArray();
