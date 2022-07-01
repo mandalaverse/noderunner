@@ -18,7 +18,7 @@ const mongoDbGetAsset = async ( policyID: any, assetName: any ) => {
   console.log('Connected successfully to server');
   const db: any = client.db(dbName);
   const collection: any = db.collection(process.env.COLL);
-  const obj: any = `metadata.map_json.${policyID}.${assetName}`;
+  const obj: any = `metadata.map_json.${policyID}.${fromHex(assetName)}`;
   console.log(obj);
   const findResult: any = await collection.find({ [obj]: { $exists: true }}, { projection: { [obj]: 1 }}).toArray();
   
@@ -26,5 +26,7 @@ const mongoDbGetAsset = async ( policyID: any, assetName: any ) => {
 
   return(findResult);
 };
+
+export const fromHex = ( hex: any ) => Buffer.from( hex, "hex" );
 
 export default getMetaData;
