@@ -5,7 +5,6 @@ import { OpenrpcDocument } from "@open-rpc/meta-schema";
 import { parseOpenRPCDocument } from "@open-rpc/schema-utils-js";
 import methodMapping from "./generated-method-mapping";
 import doc from "./openrpc.json";
-require('dotenv').config();
 
 export async function start() {
   const serverOptions: ServerOptions = {
