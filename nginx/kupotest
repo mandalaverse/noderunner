@@ -1,0 +1,15 @@
+map $http_x_forwarded_proto $proxy_x_forwarded_proto {
+  default $http_x_forwarded_proto;
+  ''      $scheme;
+}
+
+server {
+    server_name kupotest.bakon.dev;
+
+    location / {
+        proxy_pass http://0.0.0.0:4203;
+        proxy_set_header Host              $http_host;
+
+        proxy_set_header X-Forwarded-Proto $proxy_x_forwarded_proto;
+   }
+}

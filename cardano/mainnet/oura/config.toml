@@ -1,0 +1,30 @@
+[source]
+type = "N2C"
+address = ["Unix", "/home/bakon/.cardano/mainnet/socket/node.socket"]
+magic = "mainnet"
+
+[source.intersect]
+type = "Point"
+value = [23068793, "69c44ac1dda2ec74646e4223bc804d9126f719b1c245dadc2ad65e8de1b276d7"]
+
+[source.mapper]
+include_transaction_details = true
+include_block_cbor = true
+
+[[filters]]
+type = "Selection"
+
+[filters.check]
+predicate = "metadata_label_equals"
+argument = "721"
+
+[cursor]
+type = "File"
+path = "./cursor"
+
+[sink]
+type = "Logs"
+output_path = "./new/metadata.json"
+output_format = "JSONL"
+max_bytes_per_file = 1_048_576
+compress_files = false
