@@ -7,10 +7,7 @@ server {
        server_name ogmiostest.bakon.dev;
        keepalive_timeout       70;
 
-       location / {
-		#auth_basic           "Private Stuff";
-		#auth_basic_user_file /home/bakon/.cardano/testnet/nginx/.htpasswd;
-		
+       location / {		
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
 
@@ -27,26 +24,5 @@ server {
         }
 
 
-
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/ogmiostest.bakon.dev/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/ogmiostest.bakon.dev/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
 }
 
-
-
-server {
-    if ($host = ogmiostest.bakon.dev) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-       server_name ogmiostest.bakon.dev;
-    listen 80;
-    return 404; # managed by Certbot
-
-
-}
