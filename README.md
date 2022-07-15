@@ -86,15 +86,18 @@ Kupo can connect to either your Ogmios instance or through your Cardano nodes IP
 </details>
 
 <details>
-  <summary><b>Oura</b></summary>
-
+  <summary><b>Carp/Oura</b></summary>
+  
+https://dcspark.github.io/carp by Dc Spark
 https://github.com/txpipe/oura/releases by TxPipe Development lead by scarmuega
 
+So why bundle Carp and Oura under the same category even though they're developed by two different groups?
+
+Well, main reason is cause Cardano eco system is pretty fucking bad ass and developers like to collaborate. 
+
+But also because Carp runs Oura under the hood to aggregate the data from cardano-node, then Carp takes this information and neatly places it into postgre sql for us.
+
 Oura is a rust-native implementation of a pipeline that connects to the tip of a Cardano node through a combination of Ouroboros mini-protocol (using either a unix socket or tcp bearer), filters the events that match a particular pattern and then submits a succint, self-contained payload to pluggable observers called "sinks".
-
-So how does Noderunner use Oura? Since metadata on Cardano is actually part of the transaction and doesn’t carry over for example with a minted asset, we need to be able to recall the metadata that was minted with an assets to get more information about it.
-
-Oura helps us get this data, by pulling all metadata with label 721 and then through our scrip inserting it into mongodb where a user is able to search for it with PolicyID and Asset Name.
 
 **Connection and Sync time**
 Oura in Noderunner instance connects N2C to Cardano nodes socket directly to aggregate the mainnet asset metadata and it’s final database takes up about 4.5Gb of hd space and takes about 24hours to sync.
