@@ -88,7 +88,7 @@ Kupo can connect to either your Ogmios instance or through your Cardano nodes IP
 <details>
   <summary><b>Carp/Oura</b></summary>
   
-https://dcspark.github.io/carp by Dc Spark
+https://dcspark.github.io/carp by Dc Spark <br />
 https://github.com/txpipe/oura/releases by TxPipe Development lead by scarmuega
 
 So why bundle Carp and Oura under the same category even though they're developed by two different groups?
