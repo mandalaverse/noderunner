@@ -1,0 +1,20 @@
+[Unit]
+Description     = Carp Main Webserver Service
+Wants           = network-online.target
+After           = network-online.target
+
+[Service]
+User            = node
+Type            = simple
+WorkingDirectory= /home/node/.cardano/mainnet/carp/webserver/server/
+ExecStart       = /home/node/.cardano/mainnet/carp/webserver/server/start.sh
+
+KillSignal=SIGINT
+RestartKillSignal=SIGINT
+TimeoutStopSec=10
+LimitNOFILE=32768
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy= multi-user.target
