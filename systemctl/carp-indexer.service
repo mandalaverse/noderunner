@@ -1,0 +1,22 @@
+[Unit]
+Description     = Carp Main Indexer Service
+Wants           = network-online.target
+After           = network-online.target
+
+[Service]
+User            = node
+Type            = simple
+WorkingDirectory=/home/node/.cardano/mainnet/carp/indexer/
+ExecStart=cargo run --manifest-path /home/node/.cardano/mainnet/carp/indexer/Cargo.toml -- --plan execution_plans/default.toml
+
+KillSignal=SIGINT
+RestartKillSignal=SIGINT
+TimeoutStopSec=10
+LimitNOFILE=32768
+Restart=always
+RestartSec=10
+Environment=LD_LIBRARY_PATH=/usr/local/lib
+Environment=PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+[Install]
+WantedBy= multi-user.target
