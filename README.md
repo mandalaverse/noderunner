@@ -1,5 +1,9 @@
-**Left to do**
+![image](https://user-images.githubusercontent.com/50184793/184235833-a1b4a0e7-c665-406e-834b-7ae530d62c8f.png)
+
+
 <hr/>
+
+**Left to do**
 
 - [ ] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
  
