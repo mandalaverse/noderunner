@@ -7,7 +7,7 @@
 
 - [ ] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
  
-- [ ] Create bash scrips that will install the whole stack on a slew of operating systems and CPU architectures.
+- [ ] Create bash scripts that will install the whole stack on a slew of operating systems and CPU architectures.
 
 <hr/>
 <details>
