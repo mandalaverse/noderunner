@@ -1,3 +1,11 @@
+**Left to do**
+<hr/>
+
+- [ ] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
+ 
+- [ ] Create bash scrips that will install the whole stack on a slew of operating systems and CPU architectures.
+
+<hr/>
 <details>
   <summary><b>Mission and Current situation</b></summary>
 
@@ -7,7 +15,7 @@ One of the biggest solutions and easiest thus far has been dbSync, which is pret
 
 There is also services like blockfrost where a user can sign up for an account receive an API key and use blockfrost REST API to access whatever data you might need but it doesn't really give you a dapp and if blockfrost services go down so does your dapp.
 
-However through out the last few months several projects have emerged that give you the power of DB sync and are a lot less cumbersome. They are not replacements for DB sync and usually you have to bundle one or two of these services together to achieve what DB sync offers in one service. But in return you have only maybe 3 or 4 micro services that still take up and use a lot less resources then DB sync will.
+However through out the last few months several projects have emerged that give you the power of dbSync and are a lot less cumbersome. They are not replacements for dbSync per say and usually you have to bundle one or two of these services together to achieve what DB sync offers in one service. But in return you have only maybe 3 or 4 micro services that still take up and use a lot less resources then dbSync does.
 
 For example DB sync system requirements currently are:
 ```
@@ -20,14 +28,16 @@ Noderunner:
 ```
 12 Gigabytes of RAM or more.
 4 CPU cores or more
-140Gb or more this is with a full cardano-node synced.
+160Gb or more this is with a full cardano-node synced and Kupo with every shelley erra address and their current UTXOs and monitors for changes it has ```--prune-utxo``` flag turned on.
 ```
 
-So at this point you're probably wondering how the fuck does Noderunner do it. If you remember mention above about software coming out you can run as micro services to aggregate the data for your dapp like you would with DB sync?
+The idea for Noderunner for me is to have a reusable development stack that's easily replicatable by the end user as well or any developer. Where a dapp developer can give the end user the option to connect to their own self hosted version of Noderunner. Think of LAMP stack which you can download linux distros that are build
 
-The three major components of Noderunner are: Ogmios, Kupo, Oura. All three pieces of software are open source and are developed by Cardano developers for Cardano developers. 
 
-With these  three tools running you will be able to have access to full UTXO history of an address, when they were created and spent, you can search by address or even by datum hash. You will also have access to assets metadata as long as they were created under the Metadata label 721.
+
+The three major components of Noderunner are: Cardano Node, Ogmios, Kupo. All three pieces of software are open source and are developed by Cardano developers for Cardano developers. 
+
+With these three tools running you will be able to have access to full UTXO history of an address, when they were created and spent, you can search by address or even by datum hash. You will also have access to assets metadata as long as they were created under the Metadata label 721.
 
 And you will have access to data like Pool information, pool delegators, stake address information on which pool it's delegating too all for a fraction of a cost in resources DB sync takes and absolutely a LOT more feasible for a user to run at home.
 </details>
@@ -81,8 +91,12 @@ With Kupo you are able to sync a index of Addresses and their UTXO state. It’l
 
 Kupo also goes a step further for the vasil/Babbage era and it will also lets you search UTXOs by their datum hash.
 
+Kupo can also search whch synced addresses hold a policy id and or asset you specify.
+
+Kupo in the very near future will also have an API end point to search for Policy/Asset Metadata making it pretty much a one stop shop
+
 **Connection and Sync time**
-Kupo can connect to either your Ogmios instance or through your Cardano nodes IPC socket to sync it’s database. Kupo takes about 24 hours to sync if you start from the Shelley ERA. And takes about 45Gb of hd space on Mainnet with every single address and it’s UTXO indexed currently existing on Cardano blockchain.
+Kupo can connect to either your Ogmios instance or through your Cardano nodes IPC socket to sync it’s database. Kupo takes about 24 hours to sync if you start from the Shelley ERA. And takes about 45Gb of hd space on Mainnet with every single address and it’s UTXO indexed currently existing on Cardano blockchain. However if you use the flag to prune used UTXOs and only keep the active ones it only has a 5.1GB foot print!!!
 </details>
 
 <details>
@@ -113,3 +127,5 @@ Now you will still need to sync your Cardano Node which takes the longest of the
 We will also provide DB boot strapping services for each service mentioned if you so choose to use them.
 
 </details>
+
+
