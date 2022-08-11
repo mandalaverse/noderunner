@@ -13,13 +13,13 @@
 <details>
   <summary><b>Mission and Current situation</b></summary>
 
-Currently if you're building a dapp on cardano you have one of few choices on how to agragate the Cardano blockchain data your dapp might need to function properly.
+Currently if you're building a dapp on cardano you have one of few choices on how to aggregate the Cardano blockchain data your dapp might need to function properly.
 
-One of the biggest solutions and easiest thus far has been dbSync, which is pretty resource intensive and even after full sync still takes up quite a bit of HD space and takes quite a while to sync on top of need the cardano node to sync as well.
+One of the most widely used and easiest solution thus far has been dbSync. However, using dbSync is rather resource intensive and even after full sync still takes up quite a bit of HD space and takes quite a while to sync on top of need the cardano node to sync as well.
 
-There is also services like blockfrost where a user can sign up for an account receive an API key and use blockfrost REST API to access whatever data you might need but it doesn't really give you a dapp and if blockfrost services go down so does your dapp.
+There is also services like Blockfrost where a user can sign up for an account, receive an API key and use blockfrost REST API to access whatever data you might need but it doesn't really give you a dApp and if Blockfrost services go down so does your dApp.
 
-However through out the last few months several projects have emerged that give you the power of dbSync and are a lot less cumbersome. They are not replacements for dbSync per say and usually you have to bundle one or two of these services together to achieve what DB sync offers in one service. But in return you have only maybe 3 or 4 micro services that still take up and use a lot less resources then dbSync does.
+However, there are several projects developed as of recent that give you the power of dbSync and are more efficient and a lot less cumbersome on resource utilization. They are not replacements for dbSync per say and usually you have to bundle one or two of these services together to achieve what DB sync offers in one service. Yet, in return there can be 3 or 4 micro-services for example that still take up and use a lot less resources then dbSync does.
 
 For example DB sync system requirements currently are:
 ```
@@ -35,7 +35,7 @@ Noderunner:
 160Gb or more this is with a full cardano-node synced and Kupo with every shelley erra address and their current UTXOs and monitors for changes it has ```--prune-utxo``` flag turned on.
 ```
 
-The idea for Noderunner for me is to have a reusable development stack that's easily replicatable by the end user as well or any developer. Where a dapp developer can give the end user the option to connect to their own self hosted version of Noderunner. Think of LAMP stack which you can download linux distros that are build
+The idea for Noderunner is to have a reusable development stack that's easily replicatable by the end user as well or any developer. Where a dApp developer can give the end user the option to connect to their own self hosted version of Noderunner. Think of [LAMP](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29) stack which you can download linux distros that have the stack pre-installed ready for developers to start building their applications. 
 
 
 
