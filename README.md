@@ -9,6 +9,8 @@
  
 - [ ] Create bash scripts that will install the whole stack on a slew of operating systems and CPU architectures.
 
+- [ ] Create simple web interface that'll allow you to administer the services.
+
 <hr/>
 <details>
   <summary><b>Mission and Current situation</b></summary>
