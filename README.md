@@ -47,6 +47,7 @@ And you will have access to data like Pool information, pool delegators, stake a
 <details>
   <summary><b>Ogmios</b></summary>
 
+![ogmios-logo-white](https://user-images.githubusercontent.com/50184793/184235372-8b563be8-c368-43c6-a87b-fceda0710e5a.png)
 https://github.com/CardanoSolutions/ogmios – by Cardano Solutions developed by KtorZ:
 
 Ogmios is a lightweight bridge interface for cardano-node. It offers a WebSocket API that enables local clients to speak Ouroboros' mini-protocols via JSON/RPC.
@@ -80,7 +81,9 @@ There is no sync time for Ogmios.
 
 <details>
   <summary><b>Kupo</b></summary>
-
+  
+![kupo](https://user-images.githubusercontent.com/50184793/184235554-51547d71-41e4-498c-a681-ed15f60799ca.png)
+<hr/>
 https://github.com/CardanoSolutions/kupo by Cardano Solutions developed by KtorZ:
 
 Kupo is fast, lightweight and configurable chain-index for the Cardano blockchain. It synchronizes data from the blockchain according to patterns matching addresses present in transaction outputs and builds a lookup table from matches to their associated output references, values and datum hashes.
