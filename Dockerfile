@@ -29,14 +29,28 @@ COPY scripts scripts
 WORKDIR /app/cardano-configurations
 RUN nix-shell -p git --command "git fetch origin && git reset --hard ${CARDANO_CONFIG_REV}"
 
-WORKDIR /app/kupo
-RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kupo
-COPY . .
-RUN nix-build -A kupo.components.exes.kupo -o dist
-RUN cp -r dist/* . && chmod +w dist/bin && chmod +x dist/bin/kupo
+#                                                                              #
+# --------------------------- BUILD (ogmios) --------------------------------- #
+#                                                                              #
+
+FROM busybox:1.35 as ogmios
+
+ARG NETWORK=mainnet
+
+LABEL name=ogmios
+LABEL description="A JSON WebSocket bridge for cardano-node."
+
+COPY --from=build /app/ogmios/bin/ogmios /bin/ogmios
+COPY --from=build /app/cardano-configurations/network/${NETWORK} /config
+
+EXPOSE 1337/tcp
+HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/ogmios health-check
+
+STOPSIGNAL SIGINT
+ENTRYPOINT ["/bin/ogmios"]
 
 #                                                                              #
-# --------------------- RUN (cardano-node + ogmios + kupo) --------------------#
+# --------------------- RUN (cardano-node & ogmios) -------------------------- #
 #                                                                              #
 
 FROM inputoutput/cardano-node:${CARDANO_NODE_VERSION} as cardano-node-ogmios
@@ -48,7 +62,6 @@ LABEL name=cardano-node-ogmios
 LABEL description="A Cardano node, side-by-side with its JSON WebSocket bridge."
 
 COPY --from=build /app/ogmios/bin/ogmios /bin/ogmios
-COPY --from=build /app/kupo/bin/kupo /bin/kupo
 COPY --from=build /app/cardano-configurations/network/${NETWORK} /config
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static /tini
 RUN chmod +x /tini && mkdir -p /ipc
