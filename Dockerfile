@@ -49,31 +49,6 @@ HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/ogmios health-check
 STOPSIGNAL SIGINT
 ENTRYPOINT ["/bin/ogmios"]
 
-RUN echo "substituters = https://cache.nixos.org https://hydra.iohk.io" >> /etc/nix/nix.conf &&\
-    echo "trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" >> /etc/nix/nix.conf
-
-WORKDIR /app/kupo
-RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kupo
-COPY . .
-RUN nix-build -A kupo.components.exes.kupo -o dist
-RUN cp -r dist/* . && chmod +w dist/bin && chmod +x dist/bin/kupo
-
-#                                                                              #
-# ----------------------------------- BUILD (kupo)-----------------------------#
-#                                                                              #
-
-FROM busybox:1.35 as kupo
-
-LABEL name=kupo
-LABEL description="A fast, lightweight & configurable chain-index for Cardano."
-
-COPY --from=build /app/kupo/bin/kupo /bin/kupo
-
-EXPOSE 1442/tcp
-STOPSIGNAL SIGINT
-HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/kupo health-check
-ENTRYPOINT ["/bin/kupo"]
-
 #                                                                              #
 # --------------------- RUN (cardano-node & ogmios) -------------------------- #
 #                                                                              #
@@ -87,7 +62,6 @@ LABEL name=cardano-node-ogmios
 LABEL description="A Cardano node, side-by-side with its JSON WebSocket bridge."
 
 COPY --from=build /app/ogmios/bin/ogmios /bin/ogmios
-COPY --from=build /app/kupo/bin/kupo /bin/kupo
 COPY --from=build /app/cardano-configurations/network/${NETWORK} /config
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static /tini
 RUN chmod +x /tini && mkdir -p /ipc
@@ -95,9 +69,9 @@ RUN chmod +x /tini && mkdir -p /ipc
 WORKDIR /root
 
  # Ogmios, cardano-node, ekg, prometheus
-EXPOSE 1337/tcp 1442/tcp 3000/tcp 12788/tcp 12798/tcp
+EXPOSE 1337/tcp 3000/tcp 12788/tcp 12798/tcp
 HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/ogmios health-check
 
 STOPSIGNAL SIGINT
-COPY scripts/runStack.sh runStack.sh
-ENTRYPOINT ["/tini", "-g", "--", "/root/runStack.sh" ]
+COPY scripts/cardano-node-ogmios.sh cardano-node-ogmios.sh
+ENTRYPOINT ["/tini", "-g", "--", "/root/cardano-node-ogmios.sh" ]
