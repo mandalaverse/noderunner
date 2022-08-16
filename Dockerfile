@@ -29,6 +29,30 @@ COPY scripts scripts
 WORKDIR /app/cardano-configurations
 RUN nix-shell -p git --command "git fetch origin && git reset --hard ${CARDANO_CONFIG_REV}"
 
+#                                                                              #
+# --------------------------- BUILD (ogmios) --------------------------------- #
+#                                                                              #
+
+FROM busybox:1.35 as ogmios
+
+ARG NETWORK=mainnet
+
+LABEL name=ogmios
+LABEL description="A JSON WebSocket bridge for cardano-node."
+
+COPY --from=build /app/ogmios/bin/ogmios /bin/ogmios
+COPY --from=build /app/cardano-configurations/network/${NETWORK} /config
+
+EXPOSE 1337/tcp
+HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/ogmios health-check
+
+STOPSIGNAL SIGINT
+ENTRYPOINT ["/bin/ogmios"]
+FROM nixos/nix:2.3.11 as build
+
+RUN echo "substituters = https://cache.nixos.org https://hydra.iohk.io" >> /etc/nix/nix.conf &&\
+    echo "trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" >> /etc/nix/nix.conf
+
 WORKDIR /app/kupo
 RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kupo
 COPY . .
@@ -36,7 +60,23 @@ RUN nix-build -A kupo.components.exes.kupo -o dist
 RUN cp -r dist/* . && chmod +w dist/bin && chmod +x dist/bin/kupo
 
 #                                                                              #
-# --------------------- RUN (cardano-node + ogmios + kupo) --------------------#
+# ----------------------------------- BUILD (kupo)-----------------------------#
+#                                                                              #
+
+FROM busybox:1.35 as kupo
+
+LABEL name=kupo
+LABEL description="A fast, lightweight & configurable chain-index for Cardano."
+
+COPY --from=build /app/kupo/bin/kupo /bin/kupo
+
+EXPOSE 1442/tcp
+STOPSIGNAL SIGINT
+HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/kupo health-check
+ENTRYPOINT ["/bin/kupo"]
+
+#                                                                              #
+# --------------------- RUN (cardano-node & ogmios) -------------------------- #
 #                                                                              #
 
 FROM inputoutput/cardano-node:${CARDANO_NODE_VERSION} as cardano-node-ogmios
@@ -56,7 +96,7 @@ RUN chmod +x /tini && mkdir -p /ipc
 WORKDIR /root
 
  # Ogmios, cardano-node, ekg, prometheus
-EXPOSE 1337/tcp 3000/tcp 12788/tcp 12798/tcp
+EXPOSE 1337/tcp 1442/tcp 3000/tcp 12788/tcp 12798/tcp
 HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/ogmios health-check
 
 STOPSIGNAL SIGINT
