@@ -11,6 +11,8 @@
 
 - [ ] Create simple web interface that'll allow you to administer the services.
 
+- [ ] Add IPFS gateway as option to stack.
+
 <hr/>
 <details>
   <summary><b>Mission and Current situation</b></summary>
