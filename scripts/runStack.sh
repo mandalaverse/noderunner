@@ -22,6 +22,17 @@ if [ $ogmios_status -ne 0 ]; then
   exit $ogmios_status
 fi
 
+kupo \
+  --node-socket /ipc/node.socket \
+  --node-config /config/cardano-node/config.json \
+  --host 0.0.0.0 \
+  --port 1442 \
+  --since 4492799.f8084c61b6a238acec985b59310b6ecec49c0ab8352249afd7268da5cff2a457 \
+  --match */* \
+  --log-level Debug \
+  --prune-utxo \
+  --in-memory &
+
 cardano-node run \
   --topology /config/cardano-node/topology.json \
   --database-path /db \
