@@ -6,10 +6,11 @@
 
 # cardano-node-ogmios.sh
 #
-#   Runs a cardano-node and an ogmios instance side-by-side, and 'monitor' both processes. If one dies, exits.
-#   This script is meant to be used within a container to provide a cardano-node+ogmios as a single service.
-#
-# Usage: ./cardano-node-ogmios.sh
+#   Runs a cardano-node, ogmios and kupo instances side-by-side, and 'monitor' all processes. If one dies, exits.
+#   This script is meant to be used within a container to provide a cardano-node+ogmios+kupo as a single service.
+#   
+# Usage: ./runStack.sh Kupo is set to prune UTXOs and only keep the most recent ones and to also sync for every,
+#         address with at least one active UTXO since the shelley era.
 
 ogmios \
   --host 0.0.0.0 \
