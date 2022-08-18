@@ -1,0 +1,6 @@
+[submodule "kupo"]
+	path = kupo
+	url = https://github.com/CardanoSolutions/kupo
+[submodule "ogmios"]
+	path = ogmios
+	url = https://github.com/CardanoSolutions/ogmios
