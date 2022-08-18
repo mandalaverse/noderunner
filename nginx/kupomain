@@ -4,7 +4,7 @@ map $http_x_forwarded_proto $proxy_x_forwarded_proto {
 }
 
 server {
-    server_name kupomain.bakon.dev;
+    server_name kupo.domain.io;
   
     location / {
         limit_except GET { deny  all; }
@@ -14,7 +14,7 @@ server {
 #       add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
 #       add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
     
-        proxy_pass http://0.0.0.0:4202;
+        proxy_pass http://0.0.0.0:1442;
         proxy_set_header Host              $http_host;
         proxy_set_header X-Forwarded-Proto $proxy_x_forwarded_proto;
    }
