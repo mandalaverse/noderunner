@@ -1,6 +1,7 @@
 #!/bin/bash
 
-git submodule update --init --recursive &&
+git clone https://github.com/CardanoSolutions/kupo
+git clone https://github.com/CardanoSolutions/ogmios
 
 docker build -t cnode-ogmios-kupo . &&
 
