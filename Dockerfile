@@ -1,4 +1,4 @@
-#  This Source Code Form is subject to the terms of the Mozilla Public
+#  This Source Code Form is subject to the terms: of the Mozilla Public
 #  License, v. 2.0. If a copy of the MPL was not distributed with this
 #  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #                                                                              #
@@ -95,5 +95,5 @@ EXPOSE 1337/tcp 1442/tcp 3000/tcp 12788/tcp 12798/tcp
 HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/ogmios health-check
 
 STOPSIGNAL SIGINT
-COPY scripts/cardano-node-ogmios.sh cardano-node-ogmios.sh
-ENTRYPOINT ["/tini", "-g", "--", "/root/cardano-node-ogmios.sh" ]
+COPY scripts/runStack.sh runStack.sh
+ENTRYPOINT ["/tini", "-g", "--", "/root/runStack.sh" ]
