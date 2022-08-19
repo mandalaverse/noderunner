@@ -32,7 +32,7 @@ kupo \
   --match */* \
   --log-level Debug \
   --prune-utxo \
-  --in-memory &
+  --workdir /kupodb &
 
 cardano-node run \
   --topology /config/cardano-node/topology.json \
