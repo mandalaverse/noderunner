@@ -5,7 +5,9 @@
 
 **Left to do**
 
-- [ ] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
+- [x] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
+
+- [ ] Add Carp/Oura as start up option after specifing execution plans and also start the web-server api to search CARP db.
  
 - [ ] Create bash scripts that will install the whole stack on a slew of operating systems and CPU architectures.
 
