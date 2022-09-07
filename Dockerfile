@@ -73,12 +73,12 @@ ENTRYPOINT ["/bin/kupo"]
 #---------------BUILD CARP-----------------------#
 FROM rust:1.61 AS x-builder
 
-LABEL name=carp
+LABEL name=carpo
 LABEL description=""
 
 WORKDIR /indexer
 
-COPY ./indexer ./
+COPY ./carp/indexer ./
 
 RUN cargo build --release -p carp -p migration
 
@@ -87,8 +87,8 @@ WORKDIR /ops
 RUN cp /indexer/target/release/carp .
 RUN cp /indexer/target/release/migration .
 
-COPY ./indexer/genesis ./genesis
-COPY ./indexer/execution_plans ./execution_plans
+COPY ./carp/indexer/genesis ./genesis
+COPY ./carp/indexer/execution_plans ./execution_plans
 
 ############################################################
 
