@@ -69,6 +69,37 @@ STOPSIGNAL SIGINT
 HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/kupo health-check
 ENTRYPOINT ["/bin/kupo"]
 
+#
+#---------------BUILD CARP-----------------------#
+FROM rust:1.61 AS x-builder
+
+LABEL name=carp
+LABEL description=""
+
+WORKDIR /indexer
+
+COPY ./indexer ./
+
+RUN cargo build --release -p carp -p migration
+
+WORKDIR /ops
+
+RUN cp /indexer/target/release/carp .
+RUN cp /indexer/target/release/migration .
+
+COPY ./indexer/genesis ./genesis
+COPY ./indexer/execution_plans ./execution_plans
+
+############################################################
+
+FROM debian:stable-slim AS carp
+ENV TZ=Etc/UTC
+ARG APP=/app
+COPY --from=x-builder /ops ${APP}
+WORKDIR ${APP}
+#USER nonroot
+ENTRYPOINT ["./carp"]
+
 #                                                                              #
 # --------------------- RUN (cardano-node, ogmios, kupo) --------------------- #
 #                                                                              #
