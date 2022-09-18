@@ -1,7 +1,7 @@
 #!/bin/bash
 
-git clone https://github.com/CardanoSolutions/kupo
-git clone https://github.com/CardanoSolutions/ogmios
+git clone https://github.com/onchainapps/kupo
+git clone https://github.com/onchainapps/ogmios
 git clone https://github.com/onchainapps/carp
 
 docker build -t cnode-ogmios-kupo . &&
