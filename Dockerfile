@@ -35,7 +35,7 @@ WORKDIR /app/kupo
 RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kupo
 COPY ./kupo .
 RUN echo "this is kupo dir"
-RUN ls .
+RUN ls /app/kupo/
 RUN nix-build -A kupo.components.exes.kupo -o dist
 RUN cp -r dist/* . && chmod +w dist/bin && chmod +x dist/bin/kupo
 
