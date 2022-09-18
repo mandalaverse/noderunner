@@ -3,16 +3,19 @@
 #  file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #                                                                              #
 # ------------------------------- SETUP  ------------------------------------- #
-#                                                                              #
+
+# ------------------------------- SETUP ENV----------------------------------- #
+
 ARG CARDANO_NODE_VERSION=1.35.3
 
-FROM nixos/nix:2.3.11 as build
+FROM --platform=${TARGETPLATFORM:-linux/amd64} nixos/nix:2.11.0 as build
 
-ARG CARDANO_CONFIG_REV=08e6c0572d5d48049fab521995b29607e0a91a9e
+ARG CARDANO_CONFIG_REV=f1263df513f4cc5666bc49245e07fd3055097fee
 
 RUN echo "substituters = https://cache.nixos.org https://hydra.iohk.io" >> /etc/nix/nix.conf &&\
     echo "trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" >> /etc/nix/nix.conf
 
+# ------------------------------- SETUP Ogmios Build Env---------------------- #
 WORKDIR /app
 RUN nix-shell -p git --command "git clone https://github.com/input-output-hk/cardano-configurations.git"
 
@@ -20,7 +23,7 @@ WORKDIR /app/ogmios
 RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use cardano-ogmios
 COPY ./ogmios/default.nix default.nix
 COPY ./ogmios/server server
-RUN nix-build -A ogmios.components.exes.ogmios -o dist
+RUN nix-build -A platform.amd64 -o dist
 RUN cp -r dist/* . && chmod +w dist/bin && chmod +x dist/bin/ogmios
 COPY scripts scripts
 
@@ -29,7 +32,7 @@ RUN nix-shell -p git --command "git fetch origin && git reset --hard ${CARDANO_C
 
 WORKDIR /app/kupo
 RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kupo
-COPY ./kupo/ ./
+COPY ./kupo/ .
 RUN nix-build -A kupo.components.exes.kupo -o dist
 RUN cp -r dist/* . && chmod +w dist/bin && chmod +x dist/bin/kupo
 
@@ -37,7 +40,7 @@ RUN cp -r dist/* . && chmod +w dist/bin && chmod +x dist/bin/kupo
 # --------------------------- BUILD (ogmios) --------------------------------- #
 #                                                                              #
 
-FROM busybox:1.35 as ogmios
+FROM --platform=${TARGETPLATFORM:-linux/amd64} busybox:1.35 as ogmios
 
 ARG NETWORK=mainnet
 
@@ -57,7 +60,7 @@ ENTRYPOINT ["/bin/ogmios"]
 # ---------------------------- BUILD (kupo) ---------------------------------- #
 #                                                                              #
 
-FROM busybox:1.35 as kupo
+FROM --platform=${TARGETPLATFORM:-linux/amd64} busybox:1.35 as kupo
 
 LABEL name=kupo
 LABEL description="A fast, lightweight & configurable chain-index for Cardano."
@@ -69,36 +72,37 @@ STOPSIGNAL SIGINT
 HEALTHCHECK --interval=10s --timeout=5s --retries=1 CMD /bin/kupo health-check
 ENTRYPOINT ["/bin/kupo"]
 
+
 #
 #---------------BUILD CARP-----------------------#
-FROM rust:1.61 AS x-builder
+#FROM rust:1.61 AS x-builder
 
-LABEL name=carpo
-LABEL description=""
+#LABEL name=carpo
+#LABEL description=""
 
-WORKDIR /indexer
+#WORKDIR /indexer
 
-COPY ./carp/indexer ./
+#COPY ./carp/indexer ./
 
-RUN cargo build --release -p carp -p migration
+#RUN cargo build --release -p carp -p migration
 
-WORKDIR /ops
+#WORKDIR /ops
 
-RUN cp /indexer/target/release/carp .
-RUN cp /indexer/target/release/migration .
+#RUN cp /indexer/target/release/carp .
+#RUN cp /indexer/target/release/migration .
 
-COPY ./carp/indexer/genesis ./genesis
-COPY ./carp/indexer/execution_plans ./execution_plans
+#COPY ./carp/indexer/genesis ./genesis
+#COPY ./carp/indexer/execution_plans ./execution_plans
 
 ############################################################
 
-FROM debian:stable-slim AS carp
-ENV TZ=Etc/UTC
-ARG APP=/app
-COPY --from=x-builder /ops ${APP}
-WORKDIR ${APP}
+#FROM debian:stable-slim AS carp
+#ENV TZ=Etc/UTC
+#ARG APP=/app
+#COPY --from=x-builder /ops ${APP}
+#WORKDIR ${APP}
 #USER nonroot
-ENTRYPOINT ["./carp"]
+#ENTRYPOINT ["./carp"]
 
 #                                                                              #
 # --------------------- RUN (cardano-node, ogmios, kupo) --------------------- #
