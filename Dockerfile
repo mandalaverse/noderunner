@@ -30,6 +30,7 @@ COPY scripts scripts
 WORKDIR /app/cardano-configurations
 RUN nix-shell -p git --command "git fetch origin && git reset --hard ${CARDANO_CONFIG_REV}"
 
+# ------------------------------- SETUP Ogmios Build Env---------------------- #
 WORKDIR /app/kupo
 RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kupo
 COPY ./kupo/ .
