@@ -1,5 +1,6 @@
 ![image](https://user-images.githubusercontent.com/50184793/184235833-a1b4a0e7-c665-406e-834b-7ae530d62c8f.png)
-
+<br/>
+***If you are a Cardano tool developer and you would like to see your tool added to the Noderunner stack PLEASE feel free to create an issue and we will be extremly happy to accomodate your tools.***
 
 <hr/>
 
@@ -7,13 +8,52 @@
 
 - [x] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
 
-- [ ] Add Carp/Oura as start up option after specifing execution plans and also start the web-server api to search CARP db.
+- [x] Add Carp/Oura as start up option after specifing execution plans and also start the web-server api to search CARP db.
  
-- [ ] Create bash scripts that will install the whole stack on a slew of operating systems and CPU architectures.
+- [x] Create bash scripts that will install the whole stack on a slew of operating systems and CPU architectures(Partially done).
 
 - [ ] Create simple web interface that'll allow you to administer the services.
 
 - [ ] Add IPFS gateway as option to stack.
+
+<hr/>
+<details>
+  <summary><b>Instructions</b></summary>
+  Noderunner currently only supports linux, what this really means though is I have only tested it on distros like Debian and openSuse.
+  However since everything is setup to run on docker containers, I believe as long as you have docker installed on your system and follows the   traditional CLI commands, you sohuld be able to build the enviroment just using the Dockerfiles'.
+  
+ There is however two bash scripts included here. One will setup Docker for you currently only tested on Debain 11(`setupDockerDebian.sh`), and the second one is will help you setup the Docker containers.
+ 
+ As mentined above, if you already have docker setup running the `Noderunner.sh` bash should be enough to get you going.
+ 
+ First step first, clone this repo to wherever you want to run this stack on. <br/>
+ Remember it is recomended you have at least 12GB Ram, Quad core CPU and 250GB SSD. <br/>
+ I run this on a i3-10th Gen, 16GB Ram and 500GB NVME and it flys.
+ 
+ Step 1: `git clone https://github.com/onchainapps/noderunner`<br/>
+ Step 2: `cd noderunner`<br/>
+ Step 3: `./Noderunner` (Only if you have Docker Setup)
+ 
+ When you run the `Noderunner.sh` you should see the following menu.
+ 
+ ![image](https://user-images.githubusercontent.com/50184793/193320732-0076feb4-0c49-4163-96b9-e0124aa08afd.png)
+ 
+ You have to setup each of the services in the order they show up in the menu, but you are not required to set them all up.
+ 
+ What this means is, Cardano node and Ogmios docker container is crucial for Kupo and Carp to function. However just having Ogmios already gives us a ton of usefull API calls to query the Cardano blockchain.
+ 
+ Kupo, will build an index of every post shelly era address and their active UTXOs and keep track of them when they're spend.
+ 
+ Carp, will build an index of all label 721 metadata on the chain so we can query it for NFT metadata of course. Carp currently is the biggest HD space hugger. But it's not because it's not efficient or anything like that, it's lightning fast and an amazing piece fo software.  It's just a very new piece of software so few things that are down dcSparks pipeline to help with this.
+ 
+ Even though CARP uses Oura under the hood, it's missing one config params that we can pass the since param, and when creating tasks we're not allowed to tell it to only save blocks that have TXs with metadata label 721.
+ 
+ What happens now is, CARP saves every single blocks information to the DB wetehr it has metadata in it or not and it does it from the beggening of the chain, however it does only save metadata for label 721 😁. Anyways once dcSPark releases an update with these changes you will be able to update your docker container, might require a DB wipe.
+ 
+ With all this said, Kupo has plans and methods to also pull metadata for a NFT from the chain, currently it's a bit more complex but it is possible. So what does this give us. Well as I mentioned aboce even though CARP is an amazing piece of software, if you're just after needing UTXO, Datum and NFT metadata info. In the future when Kupo has full metadata indexing iplemented it might be better to more efficient to just run a full Cardano Node/Ogmios/Kupo stack, and no worry about having to spin up the postgresql and CARP docker containers. Becasue in this case CARP is a bit over kill just so you can have your FT/NFT metadata.
+ 
+ However CARP will always be part of the Noderunner stack and always available and kept current you never know what your dapp requirments might be :).
+</details>
 
 <hr/>
 <details>
@@ -140,5 +180,3 @@ Now you will still need to sync your Cardano Node which takes the longest of the
 We will also provide DB boot strapping services for each service mentioned if you so choose to use them.
 
 </details>
-
-
