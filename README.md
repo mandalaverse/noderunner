@@ -3,20 +3,6 @@
 ***If you are a Cardano tool developer and you would like to see your tool added to the Noderunner stack PLEASE feel free to create an issue and we will be extremly happy to accomodate your tools.***
 
 <hr/>
-
-**Left to do**
-
-- [x] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
-
-- [x] Add Carp/Oura as start up option after specifing execution plans and also start the web-server api to search CARP db.
- 
-- [x] Create bash scripts that will install the whole stack on a slew of operating systems and CPU architectures(Partially done).
-
-- [ ] Create simple web interface that'll allow you to administer the services.
-
-- [ ] Add IPFS gateway as option to stack.
-
-<hr/>
 <details>
   <summary><b>Instructions</b></summary>
   Noderunner currently only supports linux, what this really means though is I have only tested it on distros like Debian and openSuse.
@@ -54,6 +40,17 @@
  
  However CARP will always be part of the Noderunner stack and always available and kept current you never know what your dapp requirments might be :).
 </details>
+**Left to do**
+
+- [x] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
+
+- [x] Add Carp/Oura as start up option after specifing execution plans and also start the web-server api to search CARP db.
+ 
+- [x] Create bash scripts that will install the whole stack on a slew of operating systems and CPU architectures(Partially done).
+
+- [ ] Create simple web interface that'll allow you to administer the services.
+
+- [ ] Add IPFS gateway as option to stack.
 
 <hr/>
 <details>
