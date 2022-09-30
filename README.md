@@ -40,6 +40,8 @@
  
  However CARP will always be part of the Noderunner stack and always available and kept current you never know what your dapp requirments might be :).
 </details>
+<hr/>
+
 **Left to do**
 
 - [x] Create a docker container that will run the, *Cardano node, Ogmios, Kupo*, Stack by default and Carp/Oura as an option.
