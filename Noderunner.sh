@@ -24,6 +24,7 @@ menu () {
 	echo "C: Spin up Postgresql for carp Indexer."
 	echo "D: Spin up Carp Indexer (Only indexs CIP25 metadata with label 721)."
 	echo "E: Spin up Carp Webserver to query metadata."
+	echo "F: Setup Docker for Debian."
 	echo
 	read menuItem
 
@@ -36,7 +37,9 @@ menu () {
 	elif [ $menuItem == "D" ] || [ $menuItem == "d" ]; then
 		carp-indexer
 	elif [ $menuItem == "E" ] || [ $menuItem == "e" ]; then
-		carp-webserver			
+		carp-webserver
+	elif [ $menuItem == "F" ] || [ $menuItem == "f" ]; then
+		installDockerDebian
 	else
 		menu
 	fi
@@ -126,6 +129,13 @@ carp-webserver () {
 	echo
 	echo "curl --location --request POST 'http://localhost:3000/metadata/nft' --header 'Content-Type: application/json' --data-raw '{ \"assets\": { \"0fe7b9c1abbf139414d8e138721a85dd8d6e24ee7dc0d895587b4f57\": [ \"6a633030303030303031\" ] } }'"
 	echo
+}
+
+installDockerDebian () {
+	echo
+	echo "Attempting to setup Docker"
+	echo
+	sh ./setupDockerDebian.sh
 }
 
 welcome

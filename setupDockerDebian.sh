@@ -14,14 +14,5 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 
-echo "Docker setup complete please run, setupContainers.sh to setup Cardano node, ogmios, and kupo service container."
+echo "Docker setup complete, please run './Noderunner.sh' to setup Cardano node, ogmios, kupo or Carp docker containers."
 
-
-
-git clone https://github.com/CardanoSolutions/ogmios.git &&
-git clone https://github.com/CardanoSolutions/kupo.git &&
-
-docker build -t cnode-ogmios-kupo . &&
-
-echo "To start the docker container please run the following command: "
-echo "docker run -it --name cardano-node-ogmios -p 1337:1337 -p 1442:1442 -v cardano-node-ogmios-db:/db cnode-ogmios-kupo:latest"
