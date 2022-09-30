@@ -25,6 +25,7 @@ menu () {
 	echo "D: Spin up Carp Indexer (Only indexs CIP25 metadata with label 721)."
 	echo "E: Spin up Carp Webserver to query metadata."
 	echo "F: Setup Docker for Debian."
+	echo "G: Prune unused Docker images, this on average can free up 10GB of HD space. These are images that were used when the different services were building from source."
 	echo
 	read menuItem
 
@@ -40,6 +41,8 @@ menu () {
 		carp-webserver
 	elif [ $menuItem == "F" ] || [ $menuItem == "f" ]; then
 		installDockerDebian
+	elif [ $menuItem == "G" ] || [ $menuItem == "g" ]; then
+		dockerPruneImages
 	else
 		menu
 	fi
@@ -136,6 +139,14 @@ installDockerDebian () {
 	echo "Attempting to setup Docker"
 	echo
 	sh ./setupDockerDebian.sh
+}
+
+dockerPruneImages () {
+	echo
+	echo "These images aren't needed unless you plan on rebuilding any service from source, in whcih case keeping them can speed up the process."
+	echo
+	docker image prune -a
+	echo
 }
 
 welcome
