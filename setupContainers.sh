@@ -14,15 +14,14 @@ menu () {
 
 	if [ $menuItem == "A" ] || [ $menuItem == "a" ]; then
 		ogmios
-	else
-		menu
-	fi
-
-	if [ $menuItem == "B" ] || [ $menuItem == "b" ]; then
+	elif [ $menuItem == "B" ] || [ $menuItem == "b" ]; then
 		kupo
 	else
 		menu
 	fi
+
+	
+
 }
 
 ogmios () {
