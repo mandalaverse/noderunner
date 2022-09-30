@@ -19,11 +19,11 @@ welcome () {
 menu () {
 	echo "#########MENU#########"
 	echo 
-	echo "A: Spin up Cardano Node with Ogmios Docker container."
-	echo "B: Spin up Kupo Docker Container."
-	echo "C: Spin up Postgresql for carp Indexer."
-	echo "D: Spin up Carp Indexer (Only indexs CIP25 metadata with label 721)."
-	echo "E: Spin up Carp Webserver to query metadata."
+	echo "A: Build Cardano Node with Ogmios Docker images."
+	echo "B: Build Kupo Docker image."
+	echo "C: Build and Run Postgresql for carp Indexer."
+	echo "D: Build Carp Indexer (Only indexs CIP25 metadata with label 721) Docker image."
+	echo "E: Build Carp Webserver Docker image that will allow you to query NFT metadata, example is shown after the setup is complete."
 	echo "F: Setup Docker for Debian."
 	echo "G: Prune unused Docker images, this on average can free up 10GB of HD space. These are images that were used when the different services were building from source."
 	echo
