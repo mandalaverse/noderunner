@@ -7,9 +7,9 @@ welcome () {
 
 menu () {
 	echo "MENU"
-	echo "A: Spinup Cardano Node with Ogmios Docker container"
-	echo "B: Spinup Kupo Docker Container"
-	echo
+	echo "A: Spin up Cardano Node with Ogmios Docker container"
+	echo "B: Spin up Kupo Docker Container"
+	echo "C: Spin up Carp indexer and Webserver(Not implmented yet")
 	read menuItem
 
 	if [ $menuItem == "A" ] || [ $menuItem == "a" ]; then
@@ -19,9 +19,6 @@ menu () {
 	else
 		menu
 	fi
-
-	
-
 }
 
 ogmios () {
@@ -35,7 +32,7 @@ kupo () {
 	git clone https://github.com/CardanoSolutions/kupo &&
 	cd kupo &&
 	docker build -t kupo . &&
-	exho "docker run -itd --name kupo p 1442:1442 -v kupo-db:/db -v cardano-node-ipc:/ipc -v cardano-node-config:/config/cardano-node kupo --node-socket /ipc/node.socket --node-config /config/cardano-node/config.json --host 0.0.0.0 --workdir /db"
+	exho "docker run -itd --name kupo -p 1442:1442 -v kupo-db:/db -v cardano-node-ipc:/ipc -v cardano-node-config:/config/cardano-node kupo --node-socket /ipc/node.socket --node-config /config/cardano-node/config.json --host 0.0.0.0 --workdir /db"
 }
 
 welcome
