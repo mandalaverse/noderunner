@@ -16,10 +16,12 @@
  Remember it is recomended you have at least 12GB Ram, Quad core CPU and 250GB SSD. <br/>
  I run this on a i3-10th Gen, 16GB Ram and 500GB NVME and it flys.
  
+ Single Step: `git clone https://github.com/onchainapps/noderunner && cd noderunner && ./Noderunner.sh` <br/><br/>
+  
  Step 1: `git clone https://github.com/onchainapps/noderunner`<br/>
  Step 2: `cd noderunner`<br/>
- Step 3: `./Noderunner` (Only if you have Docker Setup)
- 
+ Step 3: `./Noderunner` (Only if you have Docker Setup)  
+  
  When you run the `Noderunner.sh` you should see the following menu.
  
  ![image](https://user-images.githubusercontent.com/50184793/193320732-0076feb4-0c49-4163-96b9-e0124aa08afd.png)
