@@ -6,20 +6,23 @@ welcome () {
 }
 
 menu () {
-	items=(1 "Spinup Cardano Node with Ogmios Docker container"
-       	2 "Spinup Kupo Docker Container")
+	echo "MENU"
+	echo "A: Spinup Cardano Node with Ogmios Docker container"
+	echo "B: Spinup Kupo Docker Container"
+	echo
+	read menuItem
 
-	while choice=$(dialog --title "$TITLE" \
-                 --menu "Please select" 10 40 3 "${items[@]}" \
-                 2>&1 >/dev/tty)
-    do
-    case $choice in
-        1) ;; # some action on 1 
-        2) ;; # some action on 2
-        *) ;; # some action on other
-    esac
-	done
-	clear # clear after user pressed Cancel
+	if [ $menuItem == "A" ] || [ $menuItem == "a" ]; then
+		ogmios
+	else
+		menu
+	fi
+
+	if [ $menuItem == "B" ] || [ $menuItem == "b" ]; then
+		kupo
+	else
+		menu
+	fi
 }
 
 ogmios () {
