@@ -10,6 +10,9 @@ welcome () {
 #    ## #     # #     # #       #    #  #     # #    ## #    ## #       #    #  
 #     # ####### ######  ####### #     #  #####  #     # #     # ####### #     # "
 	echo "Your Cardano Stack Helper"
+	echo
+	echo
+	echo
 }
 
 menu () {
@@ -66,7 +69,7 @@ carp-webserver () {
 	git clone https://github.com/onchainapps/carp &&
 	cd carp/webserver &&
 	docker build -t carp-webserver . &&
-	echo "docker run -it --name carp-webserver --network host -e DATABASE_URL=postgresql://carp:carpdb@localhost:5432/carp carp-webserver"
+	echo "docker run -itd --name carp-webserver --network host -e DATABASE_URL=postgresql://carp:carpdb@localhost:5432/carp carp-webserver"
 }
 
 welcome
