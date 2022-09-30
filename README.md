@@ -1,7 +1,8 @@
 ![image](https://user-images.githubusercontent.com/50184793/184235833-a1b4a0e7-c665-406e-834b-7ae530d62c8f.png)
 ![image](https://user-images.githubusercontent.com/50184793/193358575-f6c8834a-d919-48b6-973c-aa9490caa3ee.png)
 
-<br/>
+<hr/>
+
 ***If you are a Cardano tool developer and you would like to see your tool added to the Noderunner stack PLEASE feel free to create an issue and we will be extremly happy to accomodate your tools.***
 
 <hr/>
