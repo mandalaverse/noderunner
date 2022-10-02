@@ -26,6 +26,7 @@ menu () {
 	echo "E: Build Carp Webserver Docker image that will allow you to query NFT metadata, example is shown after the setup is complete."
 	echo "F: Setup Docker for Debian."
 	echo "G: Prune unused Docker images, this on average can free up 10GB of HD space. These are images that were used when the different services were building from source."
+	echo "H: Setup IPFS Docker contianer. https://docs.ipfs.tech/how-to/run-ipfs-inside-docker/#set-up"
 	echo
 	read menuItem
 
@@ -43,6 +44,8 @@ menu () {
 		installDockerDebian
 	elif [ $menuItem == "G" ] || [ $menuItem == "g" ]; then
 		dockerPruneImages
+	elif [ $menuItem == "H " ] || [ $menuItem == "h" ]; then
+		ipfs
 	else
 		menu
 	fi
@@ -146,6 +149,14 @@ dockerPruneImages () {
 	echo "These images aren't needed unless you plan on rebuilding any service from source, in whcih case keeping them can speed up the process."
 	echo
 	docker image prune -a
+	echo
+}
+
+ipfs () {
+	echo
+	echo "Setting up IPFS Docker conatiner."
+	echo
+	docker run -d --name ipfs -v ipfs_staging:/export -v ipfs_data:/data/ipfs -p 4001:4001 -p 4001:4001/udp -p 127.0.0.1:8080:8080 -p 127.0.0.1:5001:5001 ipfs/kubo:latest
 	echo
 }
 
