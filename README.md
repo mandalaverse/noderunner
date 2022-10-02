@@ -1,5 +1,5 @@
 ![image](https://user-images.githubusercontent.com/50184793/184235833-a1b4a0e7-c665-406e-834b-7ae530d62c8f.png)
-![image](https://user-images.githubusercontent.com/50184793/193358575-f6c8834a-d919-48b6-973c-aa9490caa3ee.png)
+![image](https://user-images.githubusercontent.com/50184793/193437597-a84dbf33-47a6-46af-bd13-23344cd0470a.png)
 
 <hr/>
 
@@ -27,7 +27,7 @@
   
  When you run the `Noderunner.sh` you should see the following menu.
  
-![image](https://user-images.githubusercontent.com/50184793/193358570-e816646f-277b-4e9e-97e4-ee5acefadd60.png)
+![image](https://user-images.githubusercontent.com/50184793/193437600-4ff289ce-f761-4b59-a12d-d570c937009d.png)
  
  You have to setup each of the services in the order they show up in the menu, but you are not required to set them all up.
  
