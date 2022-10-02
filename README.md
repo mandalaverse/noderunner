@@ -17,7 +17,7 @@
  
  First step first, clone this repo to wherever you want to run this stack on. <br/>
  Remember it is recomended you have at least 12GB Ram, Quad core CPU and 250GB SSD. <br/>
- I run this on a i3-10th Gen, 16GB Ram and 500GB NVME and it flys.
+ I run this on a i3-10th Gen, 16GB Ram and 500GB NVME NUC I purchased online for under $400 dollars and it flys.
  
  Single Step: `git clone https://github.com/onchainapps/noderunner && cd noderunner && ./Noderunner.sh` <br/><br/>
   
