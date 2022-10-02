@@ -158,7 +158,8 @@ Kupo can connect to either your Ogmios instance or through your Cardano nodes IP
 
 <details>
   <summary><b>Carp/Oura</b></summary>
-  
+
+![carp](https://dcspark.github.io/carp/img/logo.svg)  
 https://dcspark.github.io/carp by Dc Spark <br />
 https://github.com/txpipe/oura/releases by TxPipe Development lead by scarmuega
 
