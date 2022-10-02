@@ -57,7 +57,7 @@
 
 - [ ] Create simple web interface that'll allow you to administer the services.
 
-- [ ] Add IPFS gateway as option to stack.
+- [x] Add IPFS gateway as option to stack.
 
 <hr/>
 <details>
