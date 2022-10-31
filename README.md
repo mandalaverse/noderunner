@@ -61,7 +61,7 @@
 
 <hr/>
 <details>
-  <summary><b>Mission and Current situation</b></summary>
+  <summary><b>Mission</b></summary>
 
 Currently if you're building a dapp on cardano you have one of few choices on how to aggregate the Cardano blockchain data your dapp might need to function properly.
 
