@@ -3,7 +3,7 @@
 
 <hr/>
 
-***If you are a Cardano tool developer and you would like to see your tool added to the Noderunner stack PLEASE feel free to create an issue and we will be extremly happy to accomodate your tools.***
+***If you are a Cardano tool developer and you would like to see your tool added to the Noderunner stack PLEASE feel free to create an issue and we will be very happy to accomodate your tools.***
 
 <hr/>
 <details>
