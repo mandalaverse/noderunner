@@ -1,0 +1,18 @@
+server {
+    server_name ipfs.bakon.dev;
+
+    location / {
+	
+        #limit_except GET { deny  all; }
+        #add_header 'Access-Control-Allow-Origin' '$http_origin' always;
+        #add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
+        #add_header 'Access-Control-Allow-Headers' 'DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range';
+        #add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+	
+	      proxy_pass http://192.168.8.17:8080;
+	      proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+   }
+}
