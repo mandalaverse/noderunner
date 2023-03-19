@@ -44,7 +44,7 @@ menu () {
 		installDockerDebian
 	elif [ $menuItem == "G" ] || [ $menuItem == "g" ]; then
 		dockerPruneImages
-	elif [ $menuItem == "H " ] || [ $menuItem == "h" ]; then
+	elif [ $menuItem == "H" ] || [ $menuItem == "h" ]; then
 		ipfs
 	else
 		menu
