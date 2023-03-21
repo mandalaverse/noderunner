@@ -109,7 +109,7 @@ carp-indexer () {
 	echo
 	echo "Docker Command"
 	echo
-	echo "docker run -itd --name carp-indexer -v cardano-node-ipc:/app/node-ipc -v ./carp/indexer/configs/:/app/config/indexer -e NETWORK=mainnet -e SOCKET=/app/node-ipc/node.socket -e DATABASE_URL=postgresql://carp:carpdb@<postgres host ip>:5432/carp carp-indexer"
+	echo "docker run -itd --restart=always --name carp-indexer -v cardano-node-ipc:/app/node-ipc -v ./carp/indexer/configs/:/app/config/indexer -e NETWORK=mainnet -e SOCKET=/app/node-ipc/node.socket -e DATABASE_URL=postgresql://carp:carpdb@<postgres host ip>:5432/carp carp-indexer"
 	echo
 	echo "you can run 'docker ps -a' to show all running and stopped containers and 'docker logs <container name> will give you all the logs of a container if one stopped for whatever reason."
 }
@@ -129,7 +129,7 @@ carp-webserver () {
 	echo
 	echo "Docker Command"
 	echo
-	echo "docker run -itd --name carp-webserver -p 0.0.0.0:3000:3000 -e DATABASE_URL=postgresql://carp:carpdb@<Postgresql Host IP address>:5432/carp carp-webserver"
+	echo "docker run -itd --restart=always --name carp-webserver -p 0.0.0.0:3000:3000 -e DATABASE_URL=postgresql://carp:carpdb@<Postgresql Host IP address>:5432/carp carp-webserver"
 	echo
 	echo "Run the curl command below to test if your carp-websever started properly, you can also run 'docker ps -a' and it'll show all running and stopped containers."
 	echo
@@ -156,7 +156,7 @@ ipfs () {
 	echo
 	echo "Setting up IPFS Docker conatiner."
 	echo
-	docker run -d --name ipfs -v ipfs_staging:/export -v ipfs_data:/data/ipfs -p 4001:4001 -p 4001:4001/udp -p 8080:8080 -p 5001:5001 ipfs/kubo:latest
+	docker run -itd --restart=always --name ipfs -v ipfs_staging:/export -v ipfs_data:/data/ipfs -p 4001:4001 -p 4001:4001/udp -p 8080:8080 -p 5001:5001 ipfs/kubo:latest
 	echo
 }
 
