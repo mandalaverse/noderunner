@@ -109,7 +109,7 @@ carp-indexer () {
 	echo
 	echo "Docker Command"
 	echo
-	echo "docker run -itd --restart=always --name carp-indexer -v cardano-node-ipc:/app/node-ipc -v ./carp/indexer/configs/:/app/config/indexer -e NETWORK=mainnet -e SOCKET=/app/node-ipc/node.socket -e DATABASE_URL=postgresql://carp:carpdb@<postgres host ip>:5432/carp carp-indexer"
+	echo "docker run -itd --restart=always --name carp-indexer -v cardano-node-ipc:/app/node-ipc -v <carp configs dir>/:/app/config/indexer -e NETWORK=mainnet -e SOCKET=/app/node-ipc/node.socket -e DATABASE_URL=postgresql://carp:carpdb@<postgres host ip>:5432/carp carp-indexer"
 	echo
 	echo "you can run 'docker ps -a' to show all running and stopped containers and 'docker logs <container name> will give you all the logs of a container if one stopped for whatever reason."
 }
