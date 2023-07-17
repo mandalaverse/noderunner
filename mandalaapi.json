@@ -1,0 +1,898 @@
+{
+  "openrpc": "1.2.6",
+  "info": {
+    "title": "mandala-clan-app",
+    "version": "0.7.0-beta",
+    "description": "Backend Stuff for Mandala app"
+  },
+  "methods": [
+    {
+      "name": "createSovereign",
+      "description" : "Creates Sovereign profile",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/created_at"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/created_epoch"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/discord_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pool"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pfp"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/shadow"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/nft_type"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/country"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/city"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/primary_clan"
+        }
+      ],
+      "result": {
+        "name": "createSovereignResult",
+        "description": "Returns create Sovereign",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRegen",
+      "description": "Creates Regen profile",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/created_at"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/created_epoch"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/discord_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pool"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pfp"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/shadow"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/nft_type"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/country"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/city"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/primary_clan"
+        }
+      ],
+      "result": {
+        "name": "createRegenResult",
+        "description": "Returns create REgen",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createCryptonaut",
+      "description": "Creates Cryptonaut profile",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/created_at"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/created_epoch"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/discord_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pool"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pfp"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/shadow"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/nft_type"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/country"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/city"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/primary_clan"
+        }
+      ],
+      "result": {
+        "name": "createCryptonautResult",
+        "description": "Returns create Cryptonaut results",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "updateSovereign",
+      "description" : "update Sovereigns profile",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/updated_at"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/updated_epoch"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/discord_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pool"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pfp"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/shadow"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/nft_type"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/country"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/city"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/primary_clan"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/tx"
+        }
+      ],
+      "result": {
+        "name": "updateSovereignResult",
+        "description": "Returns update Sovereign status",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "updateRegen",
+      "description" : "update Regen's profile",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/updated_at"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/updated_epoch"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/discord_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pool"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pfp"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/shadow"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/nft_type"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/country"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/city"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/primary_clan"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/tx"
+        }
+      ],
+      "result": {
+        "name": "updateRegenResult",
+        "description": "Returns updated regens status",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "updateCryptonaut",
+      "description" : "update Cryptonauts's profile",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/updated_at"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/updated_epoch"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/discord_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pool"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/pfp"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/shadow"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/nft_type"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/country"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/city"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/primary_clan"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/tx"
+        }
+      ],
+      "result": {
+        "name": "updateCryptonautResult",
+        "description": "Returns updated Cryptonaut status",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getSovereigns",
+      "description" : "Queries all sovren Sovereigns",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        }
+      ],
+      "result": {
+        "name": "getAllSovereignsResult",
+        "description": "Returns returns all Sovereigns from DB",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getSovereign",
+      "description" : "Queries Sovereign for provided stake address",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },      
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        }
+      ],
+      "result": {
+        "name": "getSovereignResult",
+        "description": "Returns Sovereign results for provided stake address",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getCells",
+      "description" : "Queries Cells table",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        }        
+      ],
+      "result": {
+        "name": "getCellsResult",
+        "description": "Returns all cells if any exist",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getCell",
+      "description" : "Queries Cells table for specific cell name",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },        
+        {
+          "$ref": "#/components/contentDescriptors/cell_name"
+        }
+      ],
+      "result": {
+        "name": "getCellResult",
+        "description": "Returns provided cell name information",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getCellMembers",
+      "description" : "Query members of specified cell.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },        
+        {
+          "$ref": "#/components/contentDescriptors/cell_name"
+        }
+      ],
+      "result": {
+        "name": "getCellMembersResult",
+        "description": "Returns members of cell specified.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getFellowships",
+      "description" : "Queries Fellowships table",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        }        
+      ],
+      "result": {
+        "name": "getFellowshipsResult",
+        "description": "Returns all Fellowships if any exist",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getFellowship",
+      "description" : "Queries Fellowships table for specified Fellowship",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fellowship_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fellowship_type"
+        }
+      ],
+      "result": {
+        "name": "getFellowshipResult",
+        "description": "Returns provided cell name information",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getFellowshipMembers",
+      "description" : "Queries members of specified fellowships.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fellowship_name"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fellowship_type"
+        }
+      ],
+      "result": {
+        "name": "getFellowshipMembersResult",
+        "description": "Returns members of specified Fellowship.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getFellowshipLogs",
+      "description": "Queries Fellowship log table",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },        
+        {
+          "$ref": "#/components/contentDescriptors/timeFrom"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/timeTo"
+        }
+      ],
+      "result": {
+        "name": "getFellowshipLogsResult",
+        "description": "Returns fellow ship logs for time frame provided.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getCellsLogs",
+      "description": "Queries cells logs table",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },        
+        {
+          "$ref": "#/components/contentDescriptors/timeFrom"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/timeTo"
+        }
+      ],
+      "result": {
+        "name": "getCellsLogsResaults",
+        "description": "Returns cells logs",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getCellsHistoryLeaders",
+      "description": "Queries all cells leaders History",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        }
+      ],
+      "result": {
+        "name": "getCellsHistoryLeadersResults",
+        "description": "Returns cells leaderlogs history",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getFellowsHistoryLeaders",
+      "description": "Queries all fellowships leaders History",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        }
+      ],
+      "result": {
+        "name": "getFellowsHistoryLeadersResults",
+        "description": "Returns Fellowships leaderlogs history",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getStakingRewards",
+      "description": "Queries all of users staking points reward history",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/created_epoch"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        }
+      ],
+      "result": {
+        "name": "getStakingRewardsResults",
+        "description": "Returns Staking points history",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getNFTOwner",
+      "description": "Query NFT Databse for owner",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/selected_chain"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        }
+      ],
+      "result": {
+        "name": "getNFTOwnerResaults",
+        "description": "Returns nfts owned by address",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createRefLink",
+      "description": "Creates Referral link",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/policy_id"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/asset_id"
+        }
+      ],
+      "result": {
+        "name": "createRefLinkResults",
+        "description": "Returns new reflink if doesn't exist yet",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sacrificeRefLink",
+      "description": "Creates Referral link",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/stake_address"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/ref_link"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/tx"
+        }
+      ],
+      "result": {
+        "name": "sacrificeRefLinkResults",
+        "description": "Returns status if link used or not",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "created_at": {
+        "name": "created_at",
+        "description": "created_at",
+        "required": true,
+        "schema": {
+          "title": "created_at",
+          "type": "string"
+        }
+      },
+      "updated_at": {
+        "name": "updated_at",
+        "description": "updated_at",
+        "required": true,
+        "schema": {
+          "title": "updated_at",
+          "type": "string"
+        }
+      },
+      "name": {
+        "name": "name",
+        "description": "name",
+        "required": true,
+        "schema": {
+          "title": "name",
+          "type": "string"
+        }
+      },
+      "stake_address": {
+        "name": "stake_address",
+        "description": "stake_address",
+        "required": true,
+        "schema": {
+          "title": "stake_address",
+          "type": "string"
+        }
+      },
+      "country": {
+        "name": "country",
+        "description": "country",
+        "required": true,
+        "schema": {
+          "title": "country",
+          "type": "string"
+        }
+      },
+      "city": {
+        "name": "city",
+        "description": "city",
+        "required": true,
+        "schema": {
+          "title": "city",
+          "type": "string"
+        }
+      },
+      "primary_clan": {
+        "name": "primary_clan",
+        "description": "primary_clan",
+        "required": true,
+        "schema": {
+          "title": "primary_clan",
+          "type": "string"
+        }
+      },
+      "secondary_clan": {
+        "name": "secondary_clan",
+        "description": "secondary_clan",
+        "required": true,
+        "schema": {
+          "title": "secondary_clan",
+          "type": "string"
+        }
+      },
+      "discord_name": {
+        "name": "discord_name",
+        "description": "discord_name",
+        "required": true,
+        "schema": {
+          "title": "discord_name",
+          "type": "string"
+        }
+      },
+      "nft_did": {
+        "name": "nft_did",
+        "description": "nft_did",
+        "required": true,
+        "schema": {
+          "title": "nft_did",
+          "type": "string"
+        }
+      },
+      "pool": {
+        "name": "pool",
+        "description": "pool",
+        "required": true,
+        "schema": {
+          "title": "pool",
+          "type": "string"
+        }
+      },
+      "cell": {
+        "name": "cell",
+        "description": "cell",
+        "required": true,
+        "schema": {
+          "title": "cell",
+          "type": "string"
+        }
+      },
+      "fellowship": {
+        "name": "fellowship",
+        "description": "fellowship",
+        "required": true,
+        "schema": {
+          "title": "fellowship",
+          "type": "string"
+        }
+      },
+      "pfp": {
+        "name": "pfp",
+        "description": "pfp",
+        "required": true,
+        "schema": {
+          "title": "pfp",
+          "type": "string"
+        }
+      },
+      "shadow": {
+        "name": "shadow",
+        "description": "shadow",
+        "required": true,
+        "schema": {
+          "title": "shadow",
+          "type": "string"
+        }
+      },
+      "nft_type": {
+        "name": "nft_type",
+        "description": "nft_type",
+        "required": true,
+        "schema": {
+          "title": "nft_type",
+          "type": "string"
+        }
+      },
+      "cell_join_epoch": {
+        "name": "cell_join_epoch",
+        "description": "cell_join_epoch",
+        "required": true,
+        "schema": {
+          "title": "cell_join_epoch",
+          "type": "string"
+        }
+      },
+      "fellowship_join_epoch": {
+        "name": "fellowship_join_epoch",
+        "description": "fellowship_join_epoch",
+        "required": true,
+        "schema": {
+          "title": "fellowship_join_epoch",
+          "type": "string"
+        }
+      },
+      "created_epoch": {
+        "name": "created_epoch",
+        "description": "sovereign created_epoch",
+        "required": true,
+        "schema": {
+          "title": "created_epoch",
+          "type": "string"
+        }
+      },
+      "updated_epoch": {
+        "name": "updated_epoch",
+        "description": "item updated at epoch",
+        "required": true,
+        "schema": {
+          "title": "updated_epoch",
+          "type": "string"
+        }
+      },
+      "cell_name": {
+        "name": "cell_name",
+        "description": "Name of cell to query or use in backend.",
+        "required": true,
+        "schema": {
+          "title": "cell_name",
+          "type": "string"
+        }
+      },
+      "fellowship_type": {
+        "name": "fellowship_type",
+        "description": "Type of fellow ship.",
+        "required": true,
+        "schema": {
+          "title": "fellowship_type",
+          "type": "string"
+        }
+      },
+      "fellowship_name":{
+        "name": "fellowship_name",
+        "description": "Name of fellowship",
+        "required": true,
+        "schema": {
+          "title": "fellowship_name",
+          "type": "string"
+        }        
+      },
+      "timeFrom": {
+        "name": "timeFrom",
+        "description": "Time from.",
+        "required": true,
+        "schema": {
+          "title": "timeFrom",
+          "type": "string"
+        }
+      },
+      "timeTo": {
+        "name": "timeTo",
+        "description": "Time to.",
+        "required": true,
+        "schema": {
+          "title": "timeTo",
+          "type": "string"
+        }
+      },
+      "tx": {
+        "name": "tx",
+        "description": "Could be tx hash or true or left blank. Used for flagging TX action for methods that need it.",
+        "required": true,
+        "schema": {
+          "title": "tx",
+          "type": "string"
+        }
+      },
+      "policy_id": {
+        "name": "policy_id",
+        "description": "Policy ID or Address of NFT/FT depending on chain.",
+        "required": true,
+        "schema": {
+          "title": "policy_id",
+          "type": "string"
+        }
+      },
+      "asset_id": {
+        "name": "asset_id",
+        "description": "asset/token id or name in hex.",
+        "required": true,
+        "schema": {
+          "title": "asset_id",
+          "type": "string"
+        }
+      },
+      "ref_link": {
+        "name": "ref_link",
+        "description": "referral link id/name.",
+        "required": true,
+        "schema": {
+          "title": "ref_link",
+          "type": "string"
+        }
+      },
+      "selected_chain": {
+        "name": "selected_chain",
+        "description": "Selected blockchain ethereum,cardano,polkado",
+        "required": true,
+        "schema": {
+          "title": "selected_chain",
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+
