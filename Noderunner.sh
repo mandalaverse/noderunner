@@ -53,7 +53,7 @@ menu () {
 
 ogmios () {
 	echo
-	echo "Spinning up Cardano Node and ogmios docker container." &&
+	echo "Spinning up Cardano Node and ogmios docker container."
 	echo
 	docker run -itd \
 		--restart=always \
@@ -63,14 +63,13 @@ ogmios () {
 		-v cardano-node-ipc:/ipc \
 		-v cardano-node-config:/config \
 		cardanosolutions/cardano-node-ogmios:latest
-	&&
 	echo
 	echo "you can run 'docker ps -a' to show all running and stopped containers and 'docker logs <container name> will give you all the logs of a container if one stopped for whatever reason."
 }
 
 kupo () {
 	echo
-	echo "Spinning up KUPO docker container." &&
+	echo "Spinning up KUPO docker container."
 	echo
 	docker run -itd \
 		--name kupo \
@@ -86,7 +85,6 @@ kupo () {
 			--prune-utxo \
 			--since 16588737.4e9bbbb67e3ae262133d94c3da5bffce7b1127fc436e7433b87668dba34c354a \
 			--match "*/*"
-	&&
 	echo
 	echo "you can run 'docker ps -a' to show all running and stopped containers and 'docker logs <container name> will give you all the logs of a container if one stopped for whatever reason."
 }
