@@ -72,6 +72,7 @@ kupo () {
 	echo "Spinning up KUPO docker container."
 	echo
 	docker run -itd \
+		--restart=always \
 		--name kupo \
 		-p 0.0.0.0:1442:1442 \
 		-v kupo-db:/db \
